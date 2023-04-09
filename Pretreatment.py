@@ -41,5 +41,14 @@ def red_Image():
     print('Kết quả tìm ra là: ', texts)  # In kết quả đã lọc ra
     return texts
 
-Pretreatment('D://Tu_Hoc_Lap_Trinh/Python/images/Cars34.png')
-red_Image()
+def red_CAMERA():
+    img = cv2.imread('ROI.png')
+    text = pytesseract.image_to_string(img, lang="eng", config='--psm 6')
+    # print('Kết quả nhận về là: ', text)
+    filtered_text = re.findall("[a-zA-Z0-9]+", text)  # Lọc ra chỉ những chữ hoặc số
+    texts = "".join(filtered_text)
+    print('Kết quả video tìm ra là: ', texts)  # In kết quả đã lọc ra
+    return texts
+
+
+red_CAMERA()
